@@ -1,0 +1,89 @@
+﻿@model IEnumerable<GaleryArt.Models.Obra>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3 style="font-style: italic">Obras artísticas</h3>
+
+<p>
+    <a href="/Obras/Create" style="color: forestgreen;" class="clear-anchor"><span class='glyphicon glyphicon-plus-sign'></span>Nueva</a>
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            Foto
+        </th>
+        <th>
+            Nombre de obra
+        </th>
+        <th>
+            Autor
+        </th>
+        <th>
+            Año
+        </th>
+        <th>
+            Precio
+        </th>
+        <th>
+            Manifestación artística
+        </th>
+        <th>
+            Técnica
+        </th>
+        <th>
+            Premios
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        <img src="/Images/@item.path_foto" class="img-fluid img-thumbnail"
+             style="max-height: 110px !important;" alt='@item.nombre_obra'>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.nombre_obra)
+
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.autor)
+
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ano_creacion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.precio)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Manifestacione.nombre_manifestacion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tecnica1.nombre_tecnica)
+    </td>
+    <td>
+        @foreach (var premio in item.Premios)
+        {
+            <small>@premio.nombre_premio</small><br />
+        }
+    </td>
+    <td>
+        <a href="@Url.Action("Edit", "Obras", new { id = item.Id })" style="color: orange" title="Editar" class="clear-anchor">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        </a>
+        |
+        <a href="@Url.Action("Details", "Obras", new { id = item.Id })" style="color: cornflowerblue" title="Detalles" class="clear-anchor">
+            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+        </a>
+        |
+        <a href="@Url.Action("Delete", "Obras", new { id = item.Id })" style="color: darkred" title="Eliminar" class="clear-anchor">
+            <span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </a>
+    </td>
+</tr>
+}
+
+</table>

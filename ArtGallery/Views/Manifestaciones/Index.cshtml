@@ -1,0 +1,44 @@
+﻿@model IEnumerable<GaleryArt.Models.Manifestacione>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3 style="font-style: italic">Manifestaciones artísticas</h3>
+
+<p>
+    <a href="/manifestaciones/Create" style="color: forestgreen;" class="clear-anchor"><span class='glyphicon glyphicon-plus-sign'></span>Nueva</a>
+</p>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+        </th>
+        <th>
+            Manifestación
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        <a href="@Url.Action("Edit", "Manifestaciones", new { id = item.Id })" style="color: orange" title="Editar" class="clear-anchor">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        </a>
+        |
+        <a href="@Url.Action("Details", "Manifestaciones", new { id = item.Id })" style="color: cornflowerblue" title="Detalles" class="clear-anchor">
+            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+        </a>
+        |
+        <a href="@Url.Action("Delete", "Manifestaciones", new { id = item.Id })" style="color: darkred" title="Eliminar" class="clear-anchor">
+            <span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </a>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.nombre_manifestacion)
+    </td>
+    
+</tr>
+}
+
+</table>

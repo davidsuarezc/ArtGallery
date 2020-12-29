@@ -1,0 +1,124 @@
+﻿@model GaleryArt.Models.Obra
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<hr />
+
+<div class="row">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Editar obra</h3>
+        </div>
+        <div class="panel-body" style="padding:30px;">
+
+            @using (Html.BeginForm("Edit", "Obras", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.nombre_obra, "Nombre", htmlAttributes: new { @class = "control-label col-md-1" })
+                        <div class="col-md-3">
+
+
+                            @Html.EditorFor(model => model.nombre_obra, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre" } })
+                            @Html.ValidationMessageFor(model => model.nombre_obra, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.LabelFor(model => model.ano_creacion, "Año", htmlAttributes: new { @class = "control-label col-md-1" })
+                        <div class="col-md-2">
+
+                            @Html.EditorFor(model => model.ano_creacion, new { htmlAttributes = new { @class = "form-control", placeholder = "Año" } })
+                            @Html.ValidationMessageFor(model => model.ano_creacion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.autor, "Autor", htmlAttributes: new { @class = "control-label col-md-1" })
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.autor, new { htmlAttributes = new { @class = "form-control", placeholder = "Autor" } })
+                            @Html.ValidationMessageFor(model => model.autor, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.LabelFor(model => model.precio, "Precio", htmlAttributes: new { @class = "control-label col-md-1" })
+                        <div class="col-md-2">
+                            @Html.EditorFor(model => model.precio, new { htmlAttributes = new { @class = "form-control", placeholder = "Precio" } })
+                            @Html.ValidationMessageFor(model => model.precio, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.manifestacion, "Manifestación", htmlAttributes: new { @class = "control-label col-md-1" })
+                        <div class="col-md-3">
+
+                            @Html.DropDownList("manifestacion", null, "- Seleccione la manifestación -", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.manifestacion, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.LabelFor(model => model.tecnica, "Técnica", htmlAttributes: new { @class = "control-label col-md-1" })
+                        <div class="col-md-3">
+                            @Html.DropDownList("tecnica", null, "- Seleccione la técnica -", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.tecnica, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="foto">Imagen</label>
+                        <div class="col-md-3">
+
+                            <input type="file" name="foto" accept="" />
+                        </div>
+                        <div class="col-md-3">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="premios">Premios</label>
+                        <div class="col-md-3">
+
+                            <div class="input-group">
+                                <input type="text" name="awards" class="form-control" id="autocomplete" aria-describedby="basic-addon2">
+                                <span class="input-group-addon" id="basic-addon2" style="cursor: pointer"> + </span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-md-offset-1">
+                            <ul class="list-group" id="listPremios">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="checkes" style="display:none"></div>
+
+                    <br />
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <input type="submit" value="Guardar" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<div>
+    @Html.ActionLink("Regresar", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

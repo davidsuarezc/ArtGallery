@@ -1,0 +1,43 @@
+﻿@model IEnumerable<GaleryArt.Models.Premio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3 style="font-style: italic">Premios</h3>
+
+<p>
+    <a href="/premios/Create" style="color: forestgreen;" class="clear-anchor"><span class='glyphicon glyphicon-plus-sign'></span>Nuevo</a>
+</p>
+
+<table class="table table-striped">
+    <tr>
+        <th></th>
+        <th>
+            Nombre
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="@Url.Action("Edit", "Premios", new { id = item.Id })" style="color: orange" title="Editar" class="clear-anchor">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                </a>
+                |
+                <a href="@Url.Action("Details", "Premios", new { id = item.Id })" style="color: cornflowerblue" title="Detalles" class="clear-anchor">
+                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                </a>
+                |
+                <a href="@Url.Action("Delete", "Premios", new { id = item.Id })" style="color: darkred" title="Eliminar" class="clear-anchor">
+                    <span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre_premio)
+            </td>
+        </tr>
+    }
+
+</table>

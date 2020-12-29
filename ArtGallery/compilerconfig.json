@@ -1,0 +1,9 @@
+﻿[
+  {
+    "outputFile": "Content/index.css",
+    "inputFile": "Content/index.scss",
+    "minify": { "enabled": true },
+    "includeInProject": true,
+    "options": { "sourceMap": true }
+  }
+]

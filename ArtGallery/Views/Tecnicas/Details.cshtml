@@ -1,0 +1,34 @@
+﻿@model GaleryArt.Models.Tecnica
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tecnica</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Manifestacione.nombre_manifestacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manifestacione.nombre_manifestacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_tecnica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_tecnica)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,59 @@
+﻿@model GaleryArt.Models.Manifestacione
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<hr />
+
+<div class="row">
+
+    <div class="col-md-5">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Editar manifestación</h3>
+            </div>
+            <div class="panel-body" style="padding:25px;">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.Id)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.nombre_manifestacion, "Nombre", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.nombre_manifestacion, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.nombre_manifestacion, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-12">
+                                <input type="submit" value="Guardar" class="btn btn-success" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div>
+    @Html.ActionLink("Regresar", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

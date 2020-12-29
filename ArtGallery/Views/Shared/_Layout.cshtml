@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">ArtGallery</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            @if(Session["username"] != null)
+            {
+                <ul class="nav navbar-nav">
+                    <li><a href="/manifestaciones">Manifestaciones</a></li>
+                    <li><a href="/tecnicas">Tecnicas</a></li>
+                    <li><a href="/premios">Premios</a></li>
+                    <li><a href="/obras">Obras</a></li>
+                </ul>
+            }
+                
+                <form class="navbar-form navbar-left">
+                    
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+
+                    @if (Session["username"] != null)
+                    {
+                        <li><a href="/users">Usuarios</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Session["username"] <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/users/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li><a href="/users/login">Administración</a></li>
+                    }
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container body-content">
+        @if(ViewBag.Error!=null)
+        {
+            @Html.Partial("_Error_message", (string)ViewBag.Error)
+        }
+
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Galería de Arte App</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+            $('.navbar-nav li a').filter(function () { return this.href == location.href }).parent().addClass('active').siblings().removeClass('active')
+            $('.navbar-nav li a').click(function () {
+                $(this).parent().addClass('active').siblings().removeClass('active')
+           
+            })
+        })
+    </script>
+</body>
+</html>

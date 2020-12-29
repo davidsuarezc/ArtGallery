@@ -1,0 +1,32 @@
+﻿@model GaleryArt.Models.Manifestacione
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Desea eliminar esta manifestación?</h3>
+<div>
+    <h4>Manifestacione</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_manifestacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_manifestacion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

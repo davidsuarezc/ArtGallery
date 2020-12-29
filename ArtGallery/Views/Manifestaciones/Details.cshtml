@@ -1,0 +1,26 @@
+﻿@model GaleryArt.Models.Manifestacione
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Manifestación</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_manifestacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_manifestacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

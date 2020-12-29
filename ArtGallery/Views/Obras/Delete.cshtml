@@ -1,0 +1,80 @@
+﻿@model GaleryArt.Models.Obra
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Desea eliminar esta obra?</h3>
+<div>
+    <h4>Obra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Manifestacione.nombre_manifestacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manifestacione.nombre_manifestacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tecnica1.nombre_tecnica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tecnica1.nombre_tecnica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_obra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_obra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ano_creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ano_creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.autor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.autor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.path_foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.path_foto)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
